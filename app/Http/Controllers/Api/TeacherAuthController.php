@@ -69,18 +69,17 @@ class TeacherAuthController extends Controller
 
         if ($code){
             $token =  $user->createToken('token')->plainTextToken;
+            $response =[
+                'token' => $token ,
+                'code' => $code ,
+            ];
+            return $this->apiResponse($response , 201 , 'User Login Successfully');
         }else{
             throw ValidationException::withMessages([
                 'mobile' => ['The provided credentials are incorrect.'],
             ]);
         }
 
-
-        $response =[
-            'user' => $user ,
-            'token' => $token
-        ];
-        return $this->apiResponse($response , 201 , 'user login sucessfully');
 
 
     }

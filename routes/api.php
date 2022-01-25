@@ -42,6 +42,8 @@ Route::group(['middleware' => ['api' , 'checklang' ,'auth:sanctum' ] ] , functio
 Route::group(['prefix' => 'admin'] , function(){
     Route::post('/login' , [AuthController::class , 'login']);
     Route::post('/register' , [AuthController::class , 'register']);
+    Route::post('/sendOtp' , [AuthController::class , 'sendOtp']);
+    Route::post('/checkOtp' , [AuthController::class , 'checkOtp']);
 });
 
 // Auth Teacher
