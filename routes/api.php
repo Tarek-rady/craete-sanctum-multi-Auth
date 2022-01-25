@@ -27,6 +27,7 @@ Route::group(['middleware' => ['api' , 'checklang' ,'auth:sanctum' ] ] , functio
        Route::post('/destroy/{id}' , [CategoryController::class , 'destroy']);
        Route::post('/changeStatus/{id}' , [CategoryController::class , 'changeStatus']);
     });
+
     Route::group(['prefix' => 'users' , 'middleware' => 'auth.guard:users-api'] , function(){
         Route::post('profile' , function(){
         return 'only authatcition ol user';
@@ -47,6 +48,8 @@ Route::group(['prefix' => 'admin'] , function(){
 Route::group(['prefix' => 'teacher'] , function(){
     Route::post('/login' , [TeacherAuthController::class , 'login']);
     Route::post('/register' , [TeacherAuthController::class , 'register']);
+    Route::post('/sendOtp' , [TeacherAuthController::class , 'sendOtp']);
+    Route::post('/checkOtp' , [TeacherAuthController::class , 'checkOtp']);
 });
 
 
